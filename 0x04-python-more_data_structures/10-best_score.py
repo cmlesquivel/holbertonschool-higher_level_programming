@@ -8,5 +8,4 @@ def best_score(a_dictionary):
             if valor > max:
                 score = clave
         return score
-    else:
-        return None
+    return None
