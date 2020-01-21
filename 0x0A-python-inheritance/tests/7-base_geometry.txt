@@ -1,0 +1,40 @@
+ test 7-base_geometry
+======================
+
+Using ``7-base_geometry``
+------------------
+
+Import file
+
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+
+Now use it:
+
+    >>> my_obj = BaseGeometry()
+    >>> my_obj.integer_validator("my_int", 12)
+
+    >>> my_obj.integer_validator("my_int", "Jhon")
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+    >>> my_obj.integer_validator("distance", -10)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0
+
+    >>> my_obj.integer_validator("item", )
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> my_obj.integer_validator("my_int", {})
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
