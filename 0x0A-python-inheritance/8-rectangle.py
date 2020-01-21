@@ -17,3 +17,14 @@ class BaseGeometry():
             raise TypeError('{} must be an integer'.format(name))
         if value <= 0:
             raise ValueError('{} must be greater than 0'.format(name))
+
+
+class Rectangle(BaseGeometry):
+    """"Rectangle class  that inherits BaseGeometry"""
+
+    def __init__(self, width, height):
+        """" method constructor"""
+        super().integer_validator("width", width)
+        super().integer_validator("height", height)
+        self.__width = width
+        self.__height = height
