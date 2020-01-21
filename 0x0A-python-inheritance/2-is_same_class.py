@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-documentation from the class MyList
+documentation from the class is_same_class
 """
 
 
