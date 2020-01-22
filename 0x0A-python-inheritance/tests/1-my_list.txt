@@ -20,8 +20,8 @@ Now use it:
     >>> my_list.print_sorted()
     [1, 2, 3, 4, 5]
 
-    >>> my_list = MyList()
-    >>> my_list.print_sorted()
+    >>> my_list_1 = MyList()
+    >>> my_list_1.print_sorted()
     []
 
     >>> my_list = MyList()
@@ -35,3 +35,8 @@ Now use it:
     >>> my_list.append(100)
     >>> my_list.print_sorted()
     [100]
+    >>> my_list.append('str')
+    >>> my_list.print_sorted()
+    Traceback (most recent call last):
+    ...
+    TypeError: unorderable types: str() < int()
