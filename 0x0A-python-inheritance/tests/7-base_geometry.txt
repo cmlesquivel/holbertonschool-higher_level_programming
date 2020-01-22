@@ -38,3 +38,28 @@ Now use it:
     Traceback (most recent call last):
     ...
     TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("my_int", (1, 2))
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("my_int", {1, 3})
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("my_int", [1, 4])
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("my_int", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
+
+    >>> my_obj.integer_validator("my_int", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: my_int must be an integer
