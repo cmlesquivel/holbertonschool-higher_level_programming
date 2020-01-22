@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import math
 
 result = []
 
@@ -16,5 +15,14 @@ def pascal_triangle(n):
 
 def combination(n, r):
         """Pascal's Triangle"""
-        a = (math.factorial(n))
-        return int(a / ((math.factorial(r)) * math.factorial(n - r)))
+        a = factorial(n)
+        return int(a / ((factorial(r)) * factorial(n - r)))
+
+
+def factorial(n):
+        """Pascal's Triangle"""
+        if n == 0:
+                r = 1
+        else:
+                r = n * factorial(n - 1)
+        return r
