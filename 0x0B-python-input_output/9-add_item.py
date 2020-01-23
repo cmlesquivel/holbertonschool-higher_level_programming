@@ -16,6 +16,6 @@ try:
 except:
     pass
 
-list_export = my_list + list_import
+list_export = list_import + my_list
 
 save_to_json_file(list_export, filename)
