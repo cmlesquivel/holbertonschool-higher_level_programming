@@ -63,3 +63,8 @@ Now use it:
     Traceback (most recent call last):
     ...
     TypeError: my_int must be an integer
+
+    >>> my_obj.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
