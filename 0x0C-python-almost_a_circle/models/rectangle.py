@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """Rectangle module"""
 from models.base import Base
 
@@ -58,7 +58,7 @@ class Rectangle(Base):
     @property
     def y(self):
         """Method that return the attribute y"""
-        return self.__y
+        return self.__yó
 
     @y.setter
     def y(self, value):
