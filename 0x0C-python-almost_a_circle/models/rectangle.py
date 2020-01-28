@@ -58,7 +58,7 @@ class Rectangle(Base):
     @property
     def y(self):
         """Method that return the attribute y"""
-        return self.__yó
+        return self.__y
 
     @y.setter
     def y(self, value):
