@@ -3,6 +3,30 @@
 from models.base import Base
 
 
+def int_required_under_equals_zero(f):
+    """Function that check the value is int and  is not under o equal 0"""
+    def wrapper(self, value):
+        """Define wrapper function"""
+        if not isinstance(value, int):
+            raise TypeError('{} must be an integer'.format(f.__name__))
+        if value <= 0:
+            raise ValueError('{} must be > 0'.format(f.__name__))
+        return f(self, value)
+    return wrapper
+
+
+def int_required_under_zero(f):
+    """Function that check the value is int and  is not under 0"""
+    def wrapper(self, value):
+        """Define wrapper function"""
+        if not isinstance(value, int):
+            raise TypeError('{} must be an integer'.format(f.__name__))
+        if value < 0:
+            raise ValueError('{} must be >= 0'.format(f.__name__))
+        return f(self, value)
+    return wrapper
+
+
 class Rectangle(Base):
     """Define Rectangle Class"""
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -19,12 +43,9 @@ class Rectangle(Base):
         return self.__width
 
     @width.setter
+    @int_required_under_equals_zero
     def width(self, value):
         """Method that set the attribute width"""
-        if not isinstance(value, int):
-            raise TypeError('{} must be an integer'.format('width'))
-        if value <= 0:
-            raise ValueError('{} must be > 0'.format('width'))
         self.__width = value
 
     @property
@@ -33,12 +54,9 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
+    @int_required_under_equals_zero
     def height(self, value):
         """Method that set the attribute height"""
-        if not isinstance(value, int):
-            raise TypeError('{} must be an integer'.format('height'))
-        if value <= 0:
-            raise ValueError('{} must be > 0'.format('height'))
         self.__height = value
 
     @property
@@ -47,12 +65,9 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
+    @int_required_under_zero
     def x(self, value):
         """Method that set the attribute x"""
-        if not isinstance(value, int):
-            raise TypeError('{} must be an integer'.format('x'))
-        if value < 0:
-            raise ValueError('{} must be >= 0'.format('x'))
         self.__x = value
 
     @property
@@ -61,12 +76,9 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
+    @int_required_under_zero
     def y(self, value):
         """Method that set the attribute y"""
-        if not isinstance(value, int):
-            raise TypeError('{} must be an integer'.format('y'))
-        if value < 0:
-            raise ValueError('{} must be >= 0'.format('y'))
         self.__y = value
 
     def area(self):
@@ -82,7 +94,7 @@ class Rectangle(Base):
             for j in range(self.__x):
                 print(end=' ')
             for x in range(self.__width):
-                print ('#', end='')
+                print('#', end='')
             print()
 
     def __str__(self):
