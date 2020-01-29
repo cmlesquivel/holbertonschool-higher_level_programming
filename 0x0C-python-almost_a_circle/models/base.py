@@ -30,7 +30,6 @@ class Base():
         my_str = ''
         file_name = cls.__name__ + '.json'
 
-
         if list_objs is not None:
 
             for item in list_objs:
@@ -39,7 +38,7 @@ class Base():
         my_str = Base.to_json_string(data)
 
         with open(file_name, 'w') as file:
-                file.write( my_str )
+                file.write(my_str)
 
     @staticmethod
     def from_json_string(json_string):
@@ -52,9 +51,15 @@ class Base():
     @classmethod
     def create(cls, **dictionary):
         """returns an instance starting from dictionary"""
-        dummy = cls(1, 1, 1)
-        dummy.update(**dictionary)
-        return dummy
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
+            dummy.update(**dictionary)
+            return dummy
+
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
