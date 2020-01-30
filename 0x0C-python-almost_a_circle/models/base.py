@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base module"""
 import json
+import csv
 
 
 class Base():
@@ -80,3 +81,44 @@ class Base():
         for item in my_list:
             my_instances.append(cls.create(**item))
         return my_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save a object into csv"""
+
+        file_name = cls.__name__ + '.csv'
+        my_dicc_obj = []
+        my_json = ''
+
+        for item in list_objs:
+            my_dicc_obj.append((item.to_dictionary()))
+
+        if file_name == 'Rectangle.csv':
+            fieldnames = ['id', 'width', 'height', 'x', 'y']
+        elif file_name == 'Square.csv':
+            fieldnames = ['id', 'size', 'x', 'y']
+
+        with open(file_name, 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+
+            for item in my_dicc_obj:
+                writer.writerow(item)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """return list of objects from csv file"""
+
+        file_name = cls.__name__ + '.csv'
+        my_list_obj = []
+
+        with open(file_name, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                for key, value in row.items():
+                    row[key] = int(value)
+
+                my_list_obj.append(cls.create(**row))
+
+        return my_list_obj
