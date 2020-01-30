@@ -64,7 +64,13 @@ class ValidateAttr(unittest.TestCase):
             b1 = Rectangle(5, 0)
 
         with self.assertRaises(ValueError):
+            b1 = Rectangle(0, 6)
+
+        with self.assertRaises(ValueError):
             b1 = Rectangle(5, -5)
+
+        with self.assertRaises(ValueError):
+            b1 = Rectangle(-5, 3)
 
         with self.assertRaises(ValueError):
             b1 = Rectangle(5, 55, -5, 6)
@@ -139,3 +145,9 @@ class ValidateMethods(unittest.TestCase):
 
         r1.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r1), '[Rectangle] (89) 4/5 - 2/3')
+
+    def test_to_dictionary(self):
+        """Testing the to dictionary method"""
+        r1 = Rectangle(10, 2, 1, 9)
+        my_dictionary = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertDictEqual(r1.to_dictionary(), my_dictionary)
