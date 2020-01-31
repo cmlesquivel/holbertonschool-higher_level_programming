@@ -151,3 +151,52 @@ class ValidateMethods(unittest.TestCase):
         r1 = Rectangle(10, 2, 1, 9)
         my_dictionary = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
         self.assertDictEqual(r1.to_dictionary(), my_dictionary)
+
+    def test_create(self):
+        """Testing the to create method"""
+
+        my_dictionary = {'x': 1}
+        r2 = Rectangle.create(**my_dictionary)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/0 - 1/1')
+
+        my_dictionary = {'x': 1, 'y': 9}
+        r2 = Rectangle.create(**my_dictionary)
+        self.assertEqual(str(r2), '[Rectangle] (2) 1/9 - 1/1')
+
+        my_dictionary = {'x': 1, 'y': 9, 'id': 1}
+        r2 = Rectangle.create(**my_dictionary)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 1/1')
+
+        my_dictionary = {'x': 1, 'y': 9, 'id': 1, 'height': 2}
+        r2 = Rectangle.create(**my_dictionary)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 1/2')
+
+        my_dictionary = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        r2 = Rectangle.create(**my_dictionary)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 10/2')
+
+    def test_save_to_file(self):
+        """Testing the to create method"""
+        r1 = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r1])
+
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+
+        str_return = Base.from_json_string(contents)
+
+        my_list = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}]
+        self.assertEqual(str_return, my_list)
+
+    def test_save_to_file(self):
+        """Testing the to create method"""
+
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+
+        str_return = Base.from_json_string(contents)
+
+        my_list = []
+        self.assertEqual(str_return, my_list)
