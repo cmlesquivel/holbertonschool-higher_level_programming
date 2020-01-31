@@ -176,7 +176,7 @@ class ValidateMethods(unittest.TestCase):
         self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 10/2')
 
     def test_save_to_file(self):
-        """Testing the to create method"""
+        """Testing the to save to file method"""
         r1 = Rectangle(10, 7, 2, 8)
         Rectangle.save_to_file([r1])
 
@@ -188,8 +188,8 @@ class ValidateMethods(unittest.TestCase):
         my_list = [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}]
         self.assertEqual(str_return, my_list)
 
-    def test_save_to_file(self):
-        """Testing the to create method"""
+    def test_save_to_file_none(self):
+        """Testing the to save to file method none"""
 
         Rectangle.save_to_file(None)
 
@@ -200,3 +200,35 @@ class ValidateMethods(unittest.TestCase):
 
         my_list = []
         self.assertEqual(str_return, my_list)
+
+    def test_save_to_file_list(self):
+        """Testing the to save to file method list"""
+
+        Rectangle.save_to_file([])
+
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+
+        str_return = Base.from_json_string(contents)
+
+        my_list = []
+        self.assertEqual(str_return, my_list)
+
+    def test_save_to_file_list_value(self):
+        """Testing the to save to file method list value"""
+
+        Rectangle.save_to_file([Rectangle(1, 2)])
+
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+
+        str_return = Base.from_json_string(contents)
+
+        my_list = [{"y": 0, "x": 0, "id": 1, "width": 1, "height": 2}]
+        self.assertEqual(str_return, my_list)
+
+    def test_save_to_file_empty(self):
+        """Testing the to save to file method empty"""
+
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
