@@ -232,3 +232,13 @@ class ValidateMethods(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
+
+    def test_load_from_file(self):
+        """Testing the load_from_file method"""
+
+        r1 = Rectangle(10, 7, 2, 8)
+        list_rectangles_input = [r1]
+        Rectangle.save_to_file(list_rectangles_input)
+
+        r2 = Rectangle.load_from_file()
+        self.assertEqual(str(r2[0]), '[Rectangle] (1) 2/8 - 10/7')

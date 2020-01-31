@@ -223,3 +223,14 @@ class ValidateArea(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Square.save_to_file()
+
+    def test_load_from_file(self):
+        """Testing the load_from_file method"""
+
+        r1 = Square(10, 7, 2, 8)
+        list_rectangles_input = [r1]
+        Square.save_to_file(list_rectangles_input)
+
+        r2 = Square.load_from_file()
+
+        self.assertEqual(str(r2[0]), '[Square] (8) 7/2 - 10')
