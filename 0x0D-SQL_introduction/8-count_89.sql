@@ -1,2 +1,2 @@
 -- script that displays the number of records with id = 89 in the table  
-SELECT COUNT(id) FROM hbtn_0c_0 WHERE id=89
+SELECT COUNT(*) FROM hbtn_0c_0 WHERE id=89
