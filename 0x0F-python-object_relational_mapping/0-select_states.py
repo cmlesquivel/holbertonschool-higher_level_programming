@@ -1,9 +1,21 @@
 #!/usr/bin/python3
+"""
+Script that get all states
+"""
+
 import MySQLdb
+import sys
 
-db = MySQLdb.connect(host='localhost', user='root', passwd='root', db='hbtn_0e_0_usa')
+if __name__ == "__main__":
+    my_user = sys.argv[1]
+    my_pasword = sys.argv[2]
+    my_db = sys.argv[3]
 
-cur = db.cursor()
+    db = MySQLdb.connect(host='localhost', port=3306,
+                         user=my_user, passwd=my_pasword, db=my_db)
+    cur = db.cursor()
 
-states = cur.execute("SELECT * FROM states")
-print(type(states))
+    cur.execute("SELECT * FROM states ORDER BY id")
+    result_set = cur.fetchall()
+    for row in result_set:
+        print(row)
