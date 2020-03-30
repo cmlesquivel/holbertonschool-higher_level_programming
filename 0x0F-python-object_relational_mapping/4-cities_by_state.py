@@ -18,8 +18,10 @@ if __name__ == "__main__":
     cur.execute('''SELECT cities.id, cities.name, states.name
                 FROM states
                 INNER JOIN cities
-                ON states.id=cities.state_id ORDER BY states.id''')
+                ON states.id=cities.state_id ORDER BY cities.id''')
 
     result_set = cur.fetchall()
     for row in result_set:
         print(row)
+    cur.close()
+    db.close()
