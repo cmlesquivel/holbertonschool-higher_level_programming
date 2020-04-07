@@ -10,7 +10,11 @@ Base = declarative_base()
 
 
 class State(Base):
-    """Define the table states """
+    """links to the MySQL table states
+    Atributes:
+       id: auto-generated, unique integer, required and is a primary key
+       name:string required"""
+    
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, unique=True)
     name = Column(String(128), nullable=False)
