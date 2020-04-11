@@ -6,11 +6,17 @@ def find_peak(list_of_integers):
     """return the peak of a list"""
 
     max = 0
-
     if list_of_integers:
-        for x in list_of_integers:
-            if x > max:
-                max = x
-        return max
+        b = len(list_of_integers) - 1
+
+        for x in range(len(list_of_integers)):
+            if list_of_integers[x] > max:
+                max = list_of_integers[x]
+            if list_of_integers[b] > max:
+                max = list_of_integers[b]
+            if x >= b:
+                return max
+            else:
+                b = b - 1
     else:
         return "None"
