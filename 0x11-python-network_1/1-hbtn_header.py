@@ -8,7 +8,6 @@ import sys
 if __name__ == "__main__":
     try:
         with urllib.request.urlopen(sys.argv[1]) as response:
-            data = response
-            print(data.getheader('X-Request-Id'))
-    except Exception as e:
-        print(e)
+            print(response.getheader('X-Request-Id'))
+    except:
+        pass
