@@ -5,9 +5,10 @@ from  line command """
 import urllib.request
 import sys
 
-try:
-    with urllib.request.urlopen(sys.argv[1]) as response:
-        data = response
-    print(data.getheader('X-Request-Id'))
-except Exception as e:
-    print(e)
+if __name__ == "__main__":
+    try:
+        with urllib.request.urlopen(sys.argv[1]) as response:
+            data = response
+            print(data.getheader('X-Request-Id'))
+    except Exception as e:
+        print(e)
