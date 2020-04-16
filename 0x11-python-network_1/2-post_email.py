@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Python script that send a POST request to URL from line """
+"""Python script that send a POST request to URL from line """
 
 from urllib import parse
 from urllib import request
