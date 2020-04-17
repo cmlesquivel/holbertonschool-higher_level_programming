@@ -14,4 +14,4 @@ if __name__ == "__main__":
         my_dict = response.json()
         print("{}".format(my_dict['id']))
     except:
-        pass
+        print('None')
