@@ -10,8 +10,8 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     try:
-        response = requests.get(url, auth=(username, passsword))
+        response = requests.get(url, auth=(username, password))
         my_dict = response.json()
         print("{}".format(my_dict['id']))
     except:
-        print('None')
+        print("None")
