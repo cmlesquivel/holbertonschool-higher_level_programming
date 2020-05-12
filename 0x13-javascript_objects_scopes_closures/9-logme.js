@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// function that returns the reversed version of a list
+//  function that prints the number of arguments already printed
 let counter = 0;
 
 exports.logMe = function (item) {
