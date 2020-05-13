@@ -12,16 +12,16 @@ request({
 }, function (error, response, body) {
   if (error) {
     console.log(error);
-  }
+  } else {
+    films = body.results;
 
-  films = body.results;
-
-  for (let i = 0; i < films.length; i++) {
-    for (let j = 0; j < films[i].characters.length; j++) {
-      if (films[i].characters[j] === 'https://swapi-api.hbtn.io/api/people/18/') {
-        counter++;
+    for (let i = 0; i < films.length; i++) {
+      for (let j = 0; j < films[i].characters.length; j++) {
+        if (films[i].characters[j].includes('18')) {
+          counter++;
+        }
       }
     }
+    console.log(counter);
   }
-  console.log(counter);
 });
