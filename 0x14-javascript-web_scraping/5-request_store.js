@@ -12,11 +12,11 @@ request({
 }, function (error, response, body) {
   if (error) {
     console.log(error);
+  } else {
+    fs.writeFile(myFile, body, 'utf8', (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+    });
   }
-
-  fs.writeFile(myFile, body, 'utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-    }
-  });
 });
