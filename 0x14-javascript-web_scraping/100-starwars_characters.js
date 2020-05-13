@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Script that prints the title of a Star Wars movie
+// Script that prints all characters of a Star Wars movie
 
 const request = require('request');
 const movieId = process.argv[2];
@@ -12,18 +12,20 @@ request({
 }, function (error, response, body) {
   if (error) {
     console.log(error);
-  }
-  films = body.characters;
-  for (let i = 0; i < films.length; i++) {
-    request({
-      url: films[i],
-      json: true
-    }, function (error, response, body) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(body.name);
-      }
-    });
+  } else {
+    films = body.characters;
+
+    for (let i = 0; i < films.length; i++) {
+      request({
+        url: films[i],
+        json: true
+      }, function (error, response, body) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(body.name);
+        }
+      });
+    }
   }
 });
