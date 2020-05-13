@@ -13,7 +13,7 @@ request({
   if (error) {
     console.log(error);
   } else {
-    fs.writeFile(myFile, body, 'utf8', (err, data) => {
+    fs.writeFile(myFile, body, 'utf8', (err) => {
       if (err) {
         console.log(err);
       }
