@@ -7,13 +7,12 @@ const URL = process.argv[2];
 const myFile = process.argv[3];
 
 request({
-  url: URL,
-  json: true
+  url: URL
 }, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    fs.writeFile(myFile, body, 'utf8', (err) => {
+    fs.writeFile(myFile, body, 'utf8', (err, data) => {
       if (err) {
         console.log(err);
       }
